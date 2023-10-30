@@ -11,8 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-        with: 
-          node-version: '16'
+        with:
+          node-version: "16"
       - name: npm install
         env:
           CI: true
@@ -22,5 +22,4 @@ jobs:
         env:
           CI: true
         run: |
-          npm install -g claudia
-          npm install -g tsc
+          npm install -g claudia tsc
