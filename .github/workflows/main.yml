@@ -18,8 +18,9 @@ jobs:
           CI: true
         run: |
           npm ci
-      - name: npm install claudia
+      - name: npm install claudia and tsc
         env:
           CI: true
         run: |
           npm install -g claudia
+          npm install -g tsc
