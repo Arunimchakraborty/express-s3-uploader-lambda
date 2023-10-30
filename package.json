@@ -7,7 +7,9 @@
     "start": "ts-node src/index.ts",
     "dev": "nodemon --exec ts-node src/index.ts",
     "dev:local": "nodemon --exec ts-node src/index.local.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "lambda:generate": "claudia generate-serverless-express-proxy --express-module dist/index",
+    "lambda:deploy": "claudia create --handler lambda.handler --deploy-proxy-api --region ap-south-1 --profile default"
   },
   "keywords": [],
   "author": "",
