@@ -40,3 +40,4 @@ Note: You may not see the dist folder the first time you open the run. For that 
 ## Environment Variables
 
 For running this application, make sure to set up environment variables. Use the `.env.example` file as a template and create a `.env` file with appropriate credentials and configurations.
+Also for github actions, make sure to add repository secrets by going into settings of repo in github. Add a single secret file `ENV_FILE` and paste all the env values there. 
