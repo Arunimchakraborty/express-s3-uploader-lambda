@@ -9,7 +9,7 @@
 		"dev:local": "nodemon --exec ts-node src/index.local.ts",
 		"build": "tsc",
 		"lambda:generate": "claudia generate-serverless-express-proxy --express-module dist/index",
-		"lambda:deploy": "claudia create --handler lambda.handler --deploy-proxy-api --region ap-south-1",
+		"lambda:deploy": "claudia create --handler lambda.handler --deploy-proxy-api --region ap-south-1 --no-optional-dependencies",
 		"lambda:deploy-default-profile": "claudia create --handler lambda.handler --deploy-proxy-api --region ap-south-1 --profile default",
 		"lambda:deploy-custom-profile": "PROFILE=default claudia create --handler lambda.handler --deploy-proxy-api --region ap-south-1 --profile $PROFILE"
 	},
