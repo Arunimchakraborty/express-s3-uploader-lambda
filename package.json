@@ -7,7 +7,9 @@
 		"start": "ts-node src/index.ts",
 		"dev": "nodemon --exec ts-node src/index.ts",
 		"dev:local": "nodemon --exec ts-node src/index.local.ts",
-		"build": "tsc"
+		"build": "tsc",
+		"lambda:build": "sam build",
+		"lambda:deploy": "sam deploy --guided"
 	},
 	"keywords": [],
 	"author": "",
