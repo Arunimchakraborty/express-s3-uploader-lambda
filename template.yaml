@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Test-Express-Lambda-App
+  Sample SAM Template for app
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  # You can change name of the app
+  TestExpressApp:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: ./lambda.handler
+      PackageType: Zip
+      Runtime: nodejs16.x
+      MemorySize: 256
+      Timeout: 50
+      Events:
+        AppEventAPI:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: any
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  AppEventAPI:
+    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/"
+  TestExpressApp:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt TestExpressApp.Arn
+  TestExpressAppIamRole:
+    Description: "Implicit IAM Role created for TestExpressApp function"
+    Value: !GetAtt TestExpressAppRole.Arn

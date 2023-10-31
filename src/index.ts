@@ -1,20 +1,22 @@
-import express, { Request, Response } from 'express';
-import bodyParser from 'body-parser';
-import morgan from 'morgan';
-import root from './routes/root'
-require('dotenv').config();
+import express, { Request, Response } from "express";
+import bodyParser from "body-parser";
+import morgan from "morgan";
+import mainRoute from "./routes/mainRoute";
+require("dotenv").config();
 
 const app = express();
 
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 
-app.use('/', root)
+app.use("/", mainRoute);
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('GET request working');
+console.log('Loaded Main Route')
+
+app.get("/", (req: Request, res: Response) => {
+	res.send("GET request working");
 });
 
-module.exports = app
+module.exports = app;
