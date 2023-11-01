@@ -48,6 +48,8 @@ jobs:
       - name: Generate lambda files
         run: |
           npm run lambda:build
+        env:
+          SAM_CLI_TELEMETRY: 0
       - name: Deploying to lambda
         run: |
           npm run lambda:deploy
