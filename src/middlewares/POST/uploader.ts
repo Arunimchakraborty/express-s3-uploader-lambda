@@ -1,7 +1,7 @@
 import multerS3 from "multer-s3";
 import multer from "multer";
-import s3client from "./s3bucket";
-import s3bucket from "../config/AWS/s3bucket";
+import s3client from "../../services/s3bucket";
+import s3bucket from "../../config/AWS/s3bucket";
 
 const { bucketName } = s3bucket;
 
@@ -17,8 +17,8 @@ const uploader = multer({
 		},
 		key: function (req: any, file, cb) {
 			const file_name = `${Date.now().toString()}.jpg`;
-      req.file_name = file_name; // Set the file_name in the request object
-      cb(null, file_name);
+			req.file_name = file_name; // Set the file_name in the request object
+			cb(null, file_name);
 		},
 	}),
 });
