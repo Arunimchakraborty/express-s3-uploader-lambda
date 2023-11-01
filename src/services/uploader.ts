@@ -15,8 +15,10 @@ const uploader = multer({
 				contentType: file.mimetype, // Add the MIME type (image type) to the metadata
 			});
 		},
-		key: function (req, file, cb) {
-			cb(null, `${Date.now().toString()}.jpg`);
+		key: function (req: any, file, cb) {
+			const file_name = `${Date.now().toString()}.jpg`;
+      req.file_name = file_name; // Set the file_name in the request object
+      cb(null, file_name);
 		},
 	}),
 });

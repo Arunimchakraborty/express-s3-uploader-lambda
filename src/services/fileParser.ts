@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-function fileParser(req: Request, res: Response, next: NextFunction) {
+function fileFinder(req: Request, res: Response, next: NextFunction) {
   console.log(req.file)
 	const file = req.file;
 
@@ -11,4 +11,4 @@ function fileParser(req: Request, res: Response, next: NextFunction) {
 	next();
 }
 
-export default fileParser;
+export default fileFinder;

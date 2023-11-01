@@ -1,18 +1,25 @@
 import express, { Request, Response } from "express";
-import config from "../config/config";
 import uploader from "../services/uploader";
 import authenticate from "../services/authenticator";
 import fileParser from "../services/fileParser";
+import config from "../config/config";
 const router = express.Router();
-const { access_key, secret_key } = config;
+const { root_uri } = config;
 
 router.post(
 	"/",
-  authenticate,
+	authenticate,
 	uploader.single("file"),
-  fileParser,
-	async (req: Request, res: Response) => {
-		res.status(200).send({ message: "Success" });
+	fileParser,
+	async (req: any, res: Response) => {
+		const file_name = req.file_name;
+		res
+			.status(200)
+			.send({
+				message: "Success",
+				url: `${root_uri}${file_name}`,
+				file_name: file_name,
+			});
 	}
 );
 
