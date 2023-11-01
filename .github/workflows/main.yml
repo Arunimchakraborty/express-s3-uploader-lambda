@@ -17,7 +17,7 @@ jobs:
         env:
           CI: true
         run: |
-          npm install --omit=dev
+          npm install
       - name: npm install claudia and tsc
         env:
           CI: true
